@@ -32,3 +32,11 @@ git status
 git add .
 git commit -m "Initial commit"
 git log --oneline
+
+## 
+
+git status
+git diff
+git add README.md
+git commit -m "Update README with project purpose"
+git push
