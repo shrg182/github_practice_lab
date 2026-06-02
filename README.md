@@ -2,6 +2,8 @@
 
 This project is for practicing Git and GitHub workflows safely.
 
+[▶︎ chatgpt 2026-06-01 10:51 PM ](https://chatgpt.com/g/g-p-6a18c2d2752c819185df514817e2367c-github-tutorial-project/c/6a18c661-35ac-83ea-9828-e07541e5c120)
+
 ## Goals
 
 - Practice Git basics
@@ -33,7 +35,7 @@ git add .
 git commit -m "Initial commit"
 git log --oneline
 
-## 
+## This project is for practicing GitHub workflows on iMac.
 
 git status
 git diff
