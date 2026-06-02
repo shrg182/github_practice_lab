@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environment
+.venv/
+venv/
+
+# VS Code and PyCharm settings
+.vscode/
+.idea/
+
+# Temporary practice files
+experiments/
+*.tmp
