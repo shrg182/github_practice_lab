@@ -1,5 +1,10 @@
 # File History
 
+## Timeline
+
+[▶︎ chatgpt 2026-06-04 5:46 PM](https://chatgpt.com/g/g-p-6a18c2d2752c819185df514817e2367c-github-tutorial-project/c/6a21ef40-03dc-83ea-8933-e4d9e74989e0)
+
+
 You can compare the **current version** and the **previous version** in three useful ways.
 
 ## 1. Compare current file with the last Git commit
