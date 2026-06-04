@@ -1,6 +1,10 @@
 [
     {
         "text": "Study Python",
-        "done": true
+        "done": false
+    },
+    {
+        "text": "Scrape TOC online from a PDF file",
+        "done": false
     }
 ]
