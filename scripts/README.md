@@ -82,3 +82,8 @@ chapters/
     02_installing_python_on_windows/
     03_installing_python_on_linux/
 ```
+
+
+### README.md template
+
+Create a separate template and use this template in create_chapter_dirs.py
