@@ -18,10 +18,14 @@ import argparse
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
+from string import Template
 
 
 DEFAULT_TOC_FILE = Path(__file__).with_name("python_toc.txt")
-DEFAULT_OUTPUT_DIR = Path(__file__).resolve().parents[1] / "chapters"
+DEFAULT_OUTPUT_DIR = Path(__file__).resolve().parents[2] / "chapters"
+DEFAULT_TEMPLATE_DIR = Path(__file__).with_name("templates")
+CHAPTER_README_TEMPLATE = DEFAULT_TEMPLATE_DIR / "chapter_readme.md"
+SECTION_README_TEMPLATE = DEFAULT_TEMPLATE_DIR / "section_readme.md"
 
 
 @dataclass
@@ -109,70 +113,46 @@ def section_dir_name(section_number: int, title: str) -> str:
     return f"{section_number:02d}_{slugify(title)}"
 
 
+def render_template(template_path: Path, values: dict[str, str]) -> str:
+    """
+    Render a template file using named placeholders.
+    """
+    template = template_path.read_text(encoding="utf-8")
+    return Template(template).substitute(values)
+
+
 def chapter_readme_text(chapter: Chapter) -> str:
     """
     Build README content for a chapter directory.
     """
-    section_list = "\n".join(
-        f"- [ ] {section}" for section in chapter.sections
-    )
+    section_list = "\n".join(f"- [ ] {section}" for section in chapter.sections)
     if not section_list:
         section_list = "- [ ] Add study topics for this chapter."
 
-    return f"""# Chapter {chapter.number}: {chapter.title}
-
-Starting page: {chapter.page}
-
-## Study Goals
-
-- [ ] Read the chapter carefully.
-- [ ] Understand the key Python ideas.
-- [ ] Run the examples by hand.
-- [ ] Explain the chapter in your own words.
-
-## Sections
-
-{section_list}
-
-## Practice Plan
-
-- [ ] Create small Python files for the examples.
-- [ ] Modify each example at least once.
-- [ ] Write notes about errors and fixes.
-- [ ] Add one original practice exercise.
-
-## Notes
-
-Write important ideas, questions, and reminders here.
-"""
+    return render_template(
+        CHAPTER_README_TEMPLATE,
+        {
+            "chapter_number": str(chapter.number),
+            "chapter_title": chapter.title,
+            "starting_page": chapter.page,
+            "section_list": section_list,
+        },
+    )
 
 
 def section_readme_text(chapter: Chapter, section_number: int, section: str) -> str:
     """
     Build README content for a section directory.
     """
-    return f"""# {section_number:02d}. {section}
-
-Chapter {chapter.number}: {chapter.title}
-
-## Study Checklist
-
-- [ ] Read this section.
-- [ ] Type the example code yourself.
-- [ ] Run the code and observe the output.
-- [ ] Change the code and predict the result.
-- [ ] Record one thing you learned.
-
-## Practice
-
-1. Recreate the section example.
-2. Make one simple variation.
-3. Write a short explanation of how it works.
-
-## Notes
-
-Add your notes, code snippets, and questions here.
-"""
+    return render_template(
+        SECTION_README_TEMPLATE,
+        {
+            "section_number": f"{section_number:02d}",
+            "section_title": section,
+            "chapter_number": str(chapter.number),
+            "chapter_title": chapter.title,
+        },
+    )
 
 
 def write_readme(path: Path, content: str, overwrite: bool) -> bool:

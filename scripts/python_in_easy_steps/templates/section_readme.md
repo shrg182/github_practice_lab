@@ -1,6 +1,6 @@
-# 01. Introducing Python
+# $section_number. $section_title
 
-Chapter 1: Getting started
+Chapter $chapter_number: $chapter_title
 
 ## Study Checklist
 
