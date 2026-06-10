@@ -26,7 +26,7 @@ python3 todo_list.py list
 
 Python in Easy Steps
 
-[▶︎ ](https://ineasysteps.com/wp-content/uploads/2022/01/Python-in-easy-steps-2nd-edition-TOCCh1_Oct21reprint.pdf)
+[▶︎ Source url ](https://ineasysteps.com/wp-content/uploads/2022/01/Python-in-easy-steps-2nd-edition-TOCCh1_Oct21reprint.pdf)
 
 ```bash
 python3 -m pip install -r ../requirements.txt

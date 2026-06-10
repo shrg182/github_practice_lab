@@ -6,7 +6,11 @@ Download an online PDF file and extract likely table-of-contents entries.
 
 Usage:
     python3 scrape_pdf_toc.py "https://example.com/book.pdf"
+    python3 scripts/python_in_easy_steps/scrape_pdf_toc.py "https://example.com/book.pdf"
     python3 scrape_pdf_toc.py "https://example.com/book.pdf" --output toc.txt
+
+    Use --insecure to pass SSL:
+    python3 scrape_pdf_toc.py "https://ineasysteps.com/wp-content/uploads/2022/01/Python-in-easy-steps-2nd-edition-TOCCh1_Oct21reprint.pdf" --insecure --output python_toc.txt
 """
 
 from __future__ import annotations
