@@ -1,0 +1,102 @@
+Chapter 1: Getting started 7
+Introducing Python 8
+Installing Python on Windows 10
+Installing Python on Linux 12
+Meeting the interpreter 14
+Writing your first program 16
+Employing variables 18
+Obtaining user input 20
+Correcting errors 22
+Summary 24
+Chapter 2: Performing operations 25
+Doing arithmetic 26
+Assigning values 28
+Comparing values 30
+Assessing logic 32
+Examining conditions 34
+Setting precedence 36
+Casting data types 38
+Manipulating bits 40
+Summary 42
+Chapter 3: Making statements 43
+Writing lists 44
+Manipulating lists 46
+Restricting lists 48
+Associating list elements 50
+Branching with if 52
+Looping while true 54
+Looping over items 56
+Breaking out of loops 58
+Summary 60
+Chapter 4: Defining functions 61
+Understanding scope 62
+Supplying arguments 64
+Returning values 66
+Using callbacks 68
+Adding placeholders 70
+Producing generators 72
+Handling exceptions 74
+Debugging assertions 76
+Summary 78
+Chapter 5: Importing modules 79
+Storing functions 80
+Owning function names 82
+Interrogating the system 84
+Performing mathematics 86
+Calculating decimals 88
+Telling the time 90
+Running a timer 92
+Matching patterns 94
+Summary 96
+Chapter 6: Managing strings 97
+Manipulating strings 98
+Formatting strings 100
+Modifying strings 102
+Converting strings 104
+Accessing files 106
+Reading and writing files 108
+Updating file strings 110
+Pickling data 112
+Summary 114
+Chapter 7: Programming objects 115
+Encapsulating data 116
+Creating instance objects 118
+Addressing class attributes 120
+Examining built-in attributes 122
+Collecting garbage 124
+Inheriting features 126
+Overriding base methods 128
+Harnessing polymorphism 130
+Summary 132
+Chapter 8: Processing requests 133
+Sending responses 134
+Handling values 136
+Submitting forms 138
+Providing text areas 140
+Checking boxes 142
+Choosing radio buttons 144
+Selecting options 146
+Uploading files 148
+Summary 150
+Chapter 9: Building interfaces 151
+Launching a window 152
+Responding to buttons 154
+Displaying messages 156
+Gathering entries 158
+Listing options 160
+Polling radio buttons 162
+Checking boxes 164
+Adding images 166
+Summary 168
+Chapter 10: Developing applications 169
+Generating random numbers 170
+Planning the program 172
+Designing the interface 174
+Assigning static properties 176
+Initializing dynamic properties 177
+Adding runtime functionality 178
+Testing the program 180
+Installing a freezing tool 182
+Freezing the program 184
+Summary 186
+Index 187
