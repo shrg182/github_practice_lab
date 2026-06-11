@@ -35,7 +35,6 @@ class Chapter:
 
 def parse_toc_line(line: str) -> tuple[str, str]:
     """Split a TOC line into title and page number."""
-<<<<<<< HEAD
     match = re.match(
         r"^(.+?)\s+(\d+|[ivxlcdm]+)$",
         line.strip(),
@@ -46,7 +45,6 @@ def parse_toc_line(line: str) -> tuple[str, str]:
         return line.strip(), ""
 
     return match.group(1).strip(), match.group(2)
-=======
     cleaned_line = line.strip()
 
     cleaned_line = re.sub(r"\.{2,}", " ", cleaned_line)
@@ -156,4 +154,3 @@ def section_dir_name(section_number: int, title: str) -> str:
     """Build the directory name for a chapter section."""
     return f"{section_number:02d}_slugify{title}"
 
->>>>>>> b8c22af5570b99695aaade8a023f9a7eb6a22f6a
