@@ -32,3 +32,16 @@ class Chapter:
     page: str
     sections: list[str] = field(default_factory=list)
 
+
+def parse_toc_line(line: str) -> tuple[str, str]:
+    """Split a TOC line into title and page number."""
+    match = re.match(
+        r"^(.+?)\s+(\d+|[ivxlcdm]+)$",
+        line.strip(),
+        re.IGNORECASE,
+    )
+
+    if match is None:
+        return line.strip(), ""
+
+    return match.group(1).strip(), match.group(2)
