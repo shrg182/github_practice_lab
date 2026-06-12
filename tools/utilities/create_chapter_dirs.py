@@ -154,3 +154,42 @@ def section_dir_name(section_number: int, title: str) -> str:
     """Build the directory name for a chapter section."""
     return f"{section_number:02d}_slugify{title}"
 
+
+def render_template(template_path: Path, values: dict[str, str]) -> str:
+    """Render a template file using named placeholders."""
+    if not template_path.is_file():
+        raise FileNotFoundError(f"Template file not found: {template_path}")
+    
+    template = template_path.read_text(encoding="utf-8")
+    return Template(template).safe_substitute(values)
+
+
+def chapter_readme_text(chapter: Chapter) -> str:
+    """Build README content for a chapter directory."""
+    section_list = "\n".join(f"- [ ] {section}" for section in chapter.sections)
+
+    if not section_list:
+        section_list = "- [ ] Add study topics for this chapter."
+
+    return render_template(
+        CHAPTER_README_TEMPLATE,
+        {
+            "chapter_number": str(chapter.number),
+            "chapter_title": chapter.title,
+            "starting_page": chapter.page,
+            "section_list": section_list,
+        }
+    )
+
+
+def section_readme_text(chapter: Chapter, section_number: int, section: str) -> str:
+    """Build README content for a section directory."""
+    return render_template(
+        SECTION_README_TEMPLATE,
+        {
+            "section_number": f"{section_dir_name:02d}",
+            "section_title": section,
+            "chapter_number": str(chapter.number),
+            "chapter_title": chapter.title, 
+        }
+    )
