@@ -193,3 +193,66 @@ def section_readme_text(chapter: Chapter, section_number: int, section: str) -> 
             "chapter_title": chapter.title, 
         }
     )
+
+
+def render_template(template_path: Path, values: dict[str, str]) -> str:
+    """Render a template file using named placeholders."""
+    if not template_path.is_file():
+        raise FileNotFoundError(f"Template file not found: {template_path}")
+    
+    template_text = template_path.read_text(encoding="utf-8")
+    return Template(template_text).safe_substitute(values)
+
+
+def chapter_readme_text(chapter: Chapter) -> str:
+    """Build README content for a chapter directory."""
+    section_list = "\n".join(f"- [ ] {section}" for section in chapter.sections)
+
+    if not section_list:
+        section_list = "- [ ] Add study topics for this chapter."
+
+    return render_template(
+        CHAPTER_README_TEMPLATE,
+        {
+            "chapter_number": str(chapter.number),
+            "chapter_title": chapter.title,
+            "starting_page": chapter.page,
+            "section_list": section_list,
+        }
+    )
+
+
+def section_readme_text(chapter: Chapter, section_number: int, section: str) -> str:
+    """Build README content for a section directory."""
+    return render_template(
+        SECTION_README_TEMPLATE,
+        {
+            "section_number": f"{section_number:02d}",
+            "section_title": section,
+            "chapter_number": str(chapter.number),
+            "chapter_title": chapter.title,
+        }
+    )
+
+
+def write_readme(path: Path, content: str, overwrite: bool) -> str:
+    """Write a README file and return a status string."""
+    readme_path = path / "README.md"
+
+    if readme_path.exists() and not overwrite:
+        return "skipped"
+    
+    readme_path.write_text(content, encoding="utf-8")
+
+    if readme_path.exists():
+        return "written"
+    
+    return "created"
+
+
+def collect_directory_paths(chapters: list[Chapter], output_dir: Path) -> list[Path]:
+    """Collect all chapter and section directory paths."""
+    paths: list[Path] = []
+
+    for chapter in chapters:
+        chapter_path = output_dir / chapter_dir_name(chapter)
